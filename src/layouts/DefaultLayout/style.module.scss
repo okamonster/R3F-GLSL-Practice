@@ -5,7 +5,10 @@
   align-items: center;
   min-height: 100vh;
   .layout {
-    display: grid;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vh;
+    height: 100vh;
   }
 }
