@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 
 import { useFrame } from '@react-three/fiber'
 
-import firstFragmentShader from '~/shaders/firstShader/fragment.glsl'
-import firstVertexShader from '~/shaders/firstShader/vertex.glsl'
+import firstFragmentShader from '~/shaders/blendColorShader/fragment.glsl'
+import firstVertexShader from '~/shaders/blendColorShader/vertex.glsl'
 
 export const BlendColorPlane = () => {
   const uniforms = {
