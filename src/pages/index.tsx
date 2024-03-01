@@ -4,7 +4,7 @@ import { OrthographicCamera } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import Head from 'next/head'
 
-import { BlendColorPlane } from '~/Objects/blendColorPlane'
+import { ClampPlane } from '~/Objects/ClampPlane'
 import { DefaultLayout } from '~/layouts/DefaultLayout'
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
       <DefaultLayout>
         <Canvas>
           <ambientLight />
-          <BlendColorPlane />
+          <ClampPlane />
           <OrthographicCamera position={[-0.5, 0.5, 0.5]} near={0.1} far={10} />
         </Canvas>
       </DefaultLayout>
