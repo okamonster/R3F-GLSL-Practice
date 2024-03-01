@@ -1,13 +1,11 @@
 /* eslint-disable react/no-unknown-property */
-import { useEffect } from 'react'
 
 import { OrthographicCamera } from '@react-three/drei'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import Head from 'next/head'
 
+import { FirstPlane } from '~/Objects/firstPlane'
 import { DefaultLayout } from '~/layouts/DefaultLayout'
-import firstFragmentShader from '~/shaders/firstShader/fragment.glsl'
-import firstVertexShader from '~/shaders/firstShader/vertex.glsl'
 
 export default function Home() {
   return (
@@ -21,40 +19,10 @@ export default function Home() {
       <DefaultLayout>
         <Canvas>
           <ambientLight />
-          <Plane />
+          <FirstPlane />
           <OrthographicCamera position={[-0.5, 0.5, 0.5]} near={0.1} far={10} />
         </Canvas>
       </DefaultLayout>
     </>
-  )
-}
-
-const Plane = () => {
-  const uniforms = {
-    u_time: { value: 0.0 },
-    u_mouse: { value: { x: 0.0, y: 0.0 } },
-    u_resolution: { value: { x: 0.0, y: 0.0 } },
-  }
-
-  useEffect(() => {
-    if (uniforms.u_resolution !== undefined) {
-      uniforms.u_resolution.value.x = window.innerWidth
-      uniforms.u_resolution.value.y = window.innerHeight
-    }
-  }, [uniforms.u_resolution])
-
-  useFrame(({ clock }) => {
-    uniforms.u_time.value = clock.getElapsedTime()
-  })
-
-  return (
-    <mesh>
-      <planeGeometry args={[2, 2]} />
-      <shaderMaterial
-        vertexShader={firstVertexShader}
-        fragmentShader={firstFragmentShader}
-        uniforms={uniforms}
-      />
-    </mesh>
   )
 }
