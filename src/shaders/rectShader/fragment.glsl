@@ -10,9 +10,9 @@ float rect(vec2 pt, vec2 size, vec2 center) {
 }
 
 void main() {
-    float inRect = rect(v_position.xy, vec2(1.0), vec2(0.0));
-
-    vec3 color = vec3(1.0,0.0,0.0)*inRect;
+    float inSquere1 = rect(v_position.xy, vec2(0.3), vec2(-0.5,0.0));
+    float inSquere2 = rect(v_position.xy, vec2(0.3), vec2(0.5,0.0));
+    vec3 color = vec3(1.0,1.0,0.0)*inSquere1 + vec3(0.0,1.0,0.0)*inSquere2;
 
     gl_FragColor = vec4(color,1.0);
 }
