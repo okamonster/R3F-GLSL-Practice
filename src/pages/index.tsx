@@ -4,7 +4,7 @@ import { OrthographicCamera } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import Head from 'next/head'
 
-import { CirclePlane } from '~/Objects/circlePlane'
+import { RectPlane } from '~/Objects/rectPlane'
 import { DefaultLayout } from '~/layouts/DefaultLayout'
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
       <DefaultLayout>
         <Canvas>
           <ambientLight />
-          <CirclePlane />
+          <RectPlane />
           <OrthographicCamera position={[-0.5, 0.5, 0.5]} near={0.1} far={10} />
         </Canvas>
       </DefaultLayout>
