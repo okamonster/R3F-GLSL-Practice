@@ -11,15 +11,19 @@ float rect(vec2 pt, vec2 size, vec2 center) {
 
 uniform float u_time;
 
-void main() {
-    float inSquere1 = rect(v_position.xy, vec2(0.3), vec2(-0.5,0.0));
-    float inSquere2 = rect(v_position.xy, vec2(0.3), vec2(0.5,0.0));
-    
-    float radius = 0.2;
-    float time = u_time *3.0;
-    vec2 center = vec2(cos(time)*radius, sin(time)*radius);
+mat2 getRotationMatrix(float theta) {
+    float s = sin(theta);
+    float c = cos(theta);
+    return mat2(c, -s, s, c);
+}
 
-    float inRect = rect(v_position.xy, vec2(1.0), center);
+void main() {
+
+    mat2 mat = getRotationMatrix(u_time);
+    vec2 pt = mat * v_position.xy;
+    float radius = 0.0;
+    vec2 center = vec2(cos(u_time), sin(u_time)) * radius;
+    float inRect = rect(pt, vec2(0.5), center);
     vec3 color = vec3(1.0,1.0,0.0)*inRect;
 
     gl_FragColor = vec4(color,1.0);
